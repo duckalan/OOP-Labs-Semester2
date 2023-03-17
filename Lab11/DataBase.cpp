@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <iomanip>
 #include "Marsh.h"
 #include "DataBase.h"
@@ -20,14 +20,14 @@ void DataBase::Initialize()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << "\nМаршрут " << i << endl;
-		cout << "Введите название начального пункта маршрута:\n";
+		cout << "\nРњР°СЂС€СЂСѓС‚ " << i << endl;
+		cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ РїСѓРЅРєС‚Р° РјР°СЂС€СЂСѓС‚Р°:\n";
 		cin >> marshes[i].startName;
 
-		cout << "Введите название конечного пункта маршрута:\n";
+		cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєРѕРЅРµС‡РЅРѕРіРѕ РїСѓРЅРєС‚Р° РјР°СЂС€СЂСѓС‚Р°:\n";
 		cin >> marshes[i].endName;
 
-		cout << "Введите номер маршрута: ";
+		cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РјР°СЂС€СЂСѓС‚Р°: ";
 		cin >> marshes[i].id;
 	}
 }
@@ -51,20 +51,20 @@ void DataBase::SortMarshesById()
 void DataBase::PrintMarshesTable()
 {
 	const int width = 15;
-	// 3 основных столбца + 4 символа '|' + '\0' 
+	// 3 РѕСЃРЅРѕРІРЅС‹С… СЃС‚РѕР»Р±С†Р° + 4 СЃРёРјРІРѕР»Р° '|' + '\0' 
 	char horizontalLine[width * 3 + 5] =
 	{
 		"-------------------------------------------------"
 	};
-	// Выравнивание по левой границе
+	// Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ РїРѕ Р»РµРІРѕР№ РіСЂР°РЅРёС†Рµ
 	cout.setf(std::ios::left);
 
-	// Шапка
+	// РЁР°РїРєР°
 	cout << horizontalLine << endl;
 	cout << "|"
-		<< setw(width) << "Номер маршрута" << "|"
-		<< setw(width) << "Начальный пункт" << "|"
-		<< setw(width) << "Конечный пункт" << "|"
+		<< setw(width) << "РќРѕРјРµСЂ РјР°СЂС€СЂСѓС‚Р°" << "|"
+		<< setw(width) << "РќР°С‡Р°Р»СЊРЅС‹Р№ РїСѓРЅРєС‚" << "|"
+		<< setw(width) << "РљРѕРЅРµС‡РЅС‹Р№ РїСѓРЅРєС‚" << "|"
 		<< endl;
 	cout << horizontalLine << endl;
 
@@ -91,9 +91,9 @@ Marsh DataBase::SearchById(int toFind)
 		}
 	}
 
-	// Маршрут не найден. Предполагается, что
-	// маршрутов с отрицательным номером не будет
-	return Marsh { "Не найден", "Не найден", -1 };
+	// РњР°СЂС€СЂСѓС‚ РЅРµ РЅР°Р№РґРµРЅ. РџСЂРµРґРїРѕР»Р°РіР°РµС‚СЃСЏ, С‡С‚Рѕ
+	// РјР°СЂС€СЂСѓС‚РѕРІ СЃ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рј РЅРѕРјРµСЂРѕРј РЅРµ Р±СѓРґРµС‚
+	return Marsh { "РќРµ РЅР°Р№РґРµРЅ", "РќРµ РЅР°Р№РґРµРЅ", -1 };
 }
 
 void DataBase::WriteTableIntoTextFile(const char* fileName)
@@ -101,7 +101,7 @@ void DataBase::WriteTableIntoTextFile(const char* fileName)
 	FILE* f = fopen(fileName, "w");
 	if (!f)
 	{
-		perror("Ошибка при открытии файла: ");
+		perror("РћС€РёР±РєР° РїСЂРё РѕС‚РєСЂС‹С‚РёРё С„Р°Р№Р»Р°: ");
 	}
 	else
 	{
@@ -110,12 +110,12 @@ void DataBase::WriteTableIntoTextFile(const char* fileName)
 			"-------------------------------------------------\n"
 		};
 
-		// Шапка
+		// РЁР°РїРєР°
 		fputs(horizontalLine, f);
 		fprintf(f, "%s%-15s%s%-15s%s%-15s%s\n",
-				"|", "Номер маршрута", 
-				"|", "Начальный пункт",
-				"|", "Конечный пункт", "|");
+				"|", "РќРѕРјРµСЂ РјР°СЂС€СЂСѓС‚Р°", 
+				"|", "РќР°С‡Р°Р»СЊРЅС‹Р№ РїСѓРЅРєС‚",
+				"|", "РљРѕРЅРµС‡РЅС‹Р№ РїСѓРЅРєС‚", "|");
 		fputs(horizontalLine, f);
 
 		for (int i = 0; i < size; i++)
@@ -136,11 +136,11 @@ void DataBase::WriteTableIntoBinaryFile(const char* fileName)
 	FILE* f = fopen(fileName, "wb");
 	if (!f)
 	{
-		perror("Ошибка при открытии файла: ");
+		perror("РћС€РёР±РєР° РїСЂРё РѕС‚РєСЂС‹С‚РёРё С„Р°Р№Р»Р°: ");
 	}
 	else 
 	{
-		// В файл будут записываться только данные маршрутов
+		// Р’ С„Р°Р№Р» Р±СѓРґСѓС‚ Р·Р°РїРёСЃС‹РІР°С‚СЊСЃСЏ С‚РѕР»СЊРєРѕ РґР°РЅРЅС‹Рµ РјР°СЂС€СЂСѓС‚РѕРІ
 		fwrite(marshes, sizeof(Marsh), size, f);
 		fclose(f);
 	}
@@ -151,7 +151,7 @@ void DataBase::ReadTableFromTextFile(const char* fileName)
 	FILE* f = fopen(fileName, "r");
 	if (!f)
 	{
-		perror("Ошибка при открытии файла: ");
+		perror("РћС€РёР±РєР° РїСЂРё РѕС‚РєСЂС‹С‚РёРё С„Р°Р№Р»Р°: ");
 	}
 	else
 	{
@@ -170,7 +170,7 @@ void DataBase::ReadTableFromBinaryFile(const char* fileName)
 	FILE* f = fopen(fileName, "r");
 	if (!f)
 	{
-		perror("Ошибка при открытии файла: ");
+		perror("РћС€РёР±РєР° РїСЂРё РѕС‚РєСЂС‹С‚РёРё С„Р°Р№Р»Р°: ");
 	}
 	else
 	{
@@ -184,12 +184,12 @@ void DataBase::ReadTableFromBinaryFile(const char* fileName)
 			"-------------------------------------------------"
 		};
 
-		// Шапка
+		// РЁР°РїРєР°
 		cout << horizontalLine << endl;
 		cout << "|"
-			<< setw(width) << "Номер маршрута" << "|"
-			<< setw(width) << "Начальный пункт" << "|"
-			<< setw(width) << "Конечный пункт" << "|"
+			<< setw(width) << "РќРѕРјРµСЂ РјР°СЂС€СЂСѓС‚Р°" << "|"
+			<< setw(width) << "РќР°С‡Р°Р»СЊРЅС‹Р№ РїСѓРЅРєС‚" << "|"
+			<< setw(width) << "РљРѕРЅРµС‡РЅС‹Р№ РїСѓРЅРєС‚" << "|"
 			<< endl;
 		cout << horizontalLine << endl;
 

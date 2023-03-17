@@ -1,9 +1,9 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "Marsh.h"
 
 void Marsh::PrintInfo()
 {
-	std::cout << "Íîìåð ìàðøðóòà: " << id << std::endl;
-	std::cout << "Íà÷àëüíûé ïóíêò: " << startName << std::endl;
-	std::cout << "Êîíå÷íûé ïóíêò: " << endName << std::endl;
+	std::cout << "ÐÐ¾Ð¼ÐµÑ€ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð°: " << id << std::endl;
+	std::cout << "ÐÐ°Ñ‡Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚: " << startName << std::endl;
+	std::cout << "ÐšÐ¾Ð½ÐµÑ‡Ð½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚: " << endName << std::endl;
 }
