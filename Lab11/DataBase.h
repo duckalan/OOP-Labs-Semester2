@@ -1,9 +1,10 @@
 #pragma once
 // —труктура, содержаща€ массив структур Marsh и длину этого массива.
-// “ак как надоело посто€нно писать в сигнатуре (marshes* marshes, int size)
 struct DataBase
 {
 	Marsh* marshes;
+
+	// ƒлина массива структур
 	int size;
 
 	DataBase(int dbSize);
