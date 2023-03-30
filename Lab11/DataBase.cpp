@@ -7,17 +7,27 @@ using std::cin;
 using std::endl;
 using std::setw;
 
+DataBase::DataBase() {};
+
 DataBase::DataBase(int dbSize)
 {
 	marshes = new Marsh[dbSize];
 	size = dbSize;
 }
+
 DataBase::~DataBase() {
 	delete[] marshes;
 }
 
 void DataBase::Initialize()
 {
+	cout << "Введите требуемое количество маршрутов: ";
+	int dbSize;
+	cin >> dbSize;
+	size = dbSize;
+
+	marshes = new Marsh[dbSize];
+
 	for (int i = 0; i < size; i++)
 	{
 		cout << "\nМаршрут " << i << endl;
@@ -98,6 +108,10 @@ Marsh DataBase::SearchById(int toFind)
 
 void DataBase::WriteTableIntoTextFile(const char* fileName)
 {
+	std::cout << "Введите количество маршрутов, которое необходимо записать: \n";
+	int numberToWrite;
+	std::cin >> numberToWrite;
+
 	FILE* f = fopen(fileName, "w");
 	if (!f)
 	{
@@ -118,7 +132,7 @@ void DataBase::WriteTableIntoTextFile(const char* fileName)
 				"|", "Конечный пункт", "|");
 		fputs(horizontalLine, f);
 
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < numberToWrite; i++)
 		{
 			fprintf(f, "%s%-15d%s%-15s%s%-15s%s\n", 
 					"|", marshes[i].id,
@@ -133,6 +147,10 @@ void DataBase::WriteTableIntoTextFile(const char* fileName)
 
 void DataBase::WriteTableIntoBinaryFile(const char* fileName)
 {
+	std::cout << "Введите количество маршрутов, которое необходимо записать: \n";
+	int numberToWrite;
+	std::cin >> numberToWrite;
+
 	FILE* f = fopen(fileName, "wb");
 	if (!f)
 	{
@@ -141,13 +159,17 @@ void DataBase::WriteTableIntoBinaryFile(const char* fileName)
 	else 
 	{
 		// В файл будут записываться только данные маршрутов
-		fwrite(marshes, sizeof(Marsh), size, f);
+		fwrite(marshes, sizeof(Marsh), numberToWrite, f);
 		fclose(f);
 	}
 }
 
 void DataBase::ReadTableFromTextFile(const char* fileName)
 {
+	std::cout << "Введите количество маршрутов, которое необходимо считать: \n";
+	int numberToWrite;
+	std::cin >> numberToWrite;
+
 	FILE* f = fopen(fileName, "r");
 	if (!f)
 	{
@@ -155,11 +177,15 @@ void DataBase::ReadTableFromTextFile(const char* fileName)
 	}
 	else
 	{
-		while (!feof(f))
+		int stringCounter = 0;
+		// 2 строки на маршрут + 3 на шапку
+		int stringsCount = numberToWrite * 2 + 3;
+		while (!feof(f) && stringCounter != stringsCount)
 		{
 			char buffer[255]{};
 			fgets(buffer, 255, f);
 			std::cout << buffer;
+			stringCounter++;
 		}
 		fclose(f);
 	}
@@ -167,15 +193,21 @@ void DataBase::ReadTableFromTextFile(const char* fileName)
 
 void DataBase::ReadTableFromBinaryFile(const char* fileName)
 {
-	FILE* f = fopen(fileName, "r");
+	std::cout << "Введите количество маршрутов, которое необходимо считать: \n";
+	int numberToWrite;
+	std::cin >> numberToWrite;
+
+	FILE* f = fopen(fileName, "rb");
 	if (!f)
 	{
 		perror("Ошибка при открытии файла: ");
 	}
 	else
 	{
-		Marsh* readedMarshes = new Marsh[size];
-		fread(readedMarshes, sizeof(Marsh), size, f);
+		Marsh* readedMarshes = new Marsh[numberToWrite];
+		// Перезапись существующих маршрутов?
+		//marshes = new Marsh[numberToWrite];
+		fread(readedMarshes, sizeof(Marsh), numberToWrite, f);
 
 		const int width = 15;
 
@@ -193,7 +225,7 @@ void DataBase::ReadTableFromBinaryFile(const char* fileName)
 			<< endl;
 		cout << horizontalLine << endl;
 
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < numberToWrite; i++)
 		{
 			cout << "|"
 				 << setw(width) << readedMarshes[i].id << "|"

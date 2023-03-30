@@ -7,7 +7,10 @@ struct DataBase
 	// Длина массива структур
 	int size;
 
+	DataBase();
+
 	DataBase(int dbSize);
+
 	~DataBase();
 
 	// Инициализация массива структур пользователем
