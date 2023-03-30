@@ -1,10 +1,10 @@
-#pragma once
+п»ї#pragma once
 struct Node
 {
 	int data;
 
 	/// <summary>
-	/// Указатель на следующий элемент.
+	/// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚.
 	/// </summary>
 	Node* next;
 

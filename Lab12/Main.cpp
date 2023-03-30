@@ -1,33 +1,33 @@
-#include <iostream>
+п»ї#include <iostream>
 #include "List.h"
 
 /*
-Сформировать списки List1 и List2 из списка List по следующему
-правилу: в List1 поместить четные положительные элементы списка List, в
-List2 – нечетные отрицательные элементы списка List. Подсчитать
-количество компонентов в списках List1 и List2.
+РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃРїРёСЃРєРё List1 Рё List2 РёР· СЃРїРёСЃРєР° List РїРѕ СЃР»РµРґСѓСЋС‰РµРјСѓ
+РїСЂР°РІРёР»Сѓ: РІ List1 РїРѕРјРµСЃС‚РёС‚СЊ С‡РµС‚РЅС‹Рµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ СЃРїРёСЃРєР° List, РІ
+List2 вЂ“ РЅРµС‡РµС‚РЅС‹Рµ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ СЃРїРёСЃРєР° List. РџРѕРґСЃС‡РёС‚Р°С‚СЊ
+РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РІ СЃРїРёСЃРєР°С… List1 Рё List2.
 */
 
 int main() 
 {
 	setlocale(LC_ALL, "Russian");
 	size_t elementCount;
-	std::cout << "Введите количество элементов в списке List: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ List: ";
 	std::cin >> elementCount;
 
 	List list(elementCount);
-	std::cout << "\nСформированный List: \n";
+	std::cout << "\nРЎС„РѕСЂРјРёСЂРѕРІР°РЅРЅС‹Р№ List: \n";
 	list.Print();
 
 	List list1 = list.CreateEvenPositiveList();
-	std::cout << "\nСозданный List1: \n";
+	std::cout << "\nРЎРѕР·РґР°РЅРЅС‹Р№ List1: \n";
 	list1.Print();
-	std::cout << "Его длина: " << list1.length << " элементов\n";
+	std::cout << "Р•РіРѕ РґР»РёРЅР°: " << list1.length << " СЌР»РµРјРµРЅС‚РѕРІ\n";
 
 	List list2 = list.CreateOddNegativeList();
-	std::cout << "\nСозданный List2: \n";
+	std::cout << "\nРЎРѕР·РґР°РЅРЅС‹Р№ List2: \n";
 	list2.Print();
-	std::cout << "Его длина: " << list2.length << " элементов\n";
+	std::cout << "Р•РіРѕ РґР»РёРЅР°: " << list2.length << " СЌР»РµРјРµРЅС‚РѕРІ\n";
 
 	system("pause");
 }

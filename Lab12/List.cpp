@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <ctime>
 #include "List.h"
 
@@ -12,8 +12,8 @@ List::List(size_t nodeCount)
 {
 	srand(time(0));
 	length = nodeCount;
-	// Генерация случайного числа в диапазоне от 0 до 99, умноженного
-	// на (-1) в степени случайного числа
+	// Р“РµРЅРµСЂР°С†РёСЏ СЃР»СѓС‡Р°Р№РЅРѕРіРѕ С‡РёСЃР»Р° РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ 0 РґРѕ 99, СѓРјРЅРѕР¶РµРЅРЅРѕРіРѕ
+	// РЅР° (-1) РІ СЃС‚РµРїРµРЅРё СЃР»СѓС‡Р°Р№РЅРѕРіРѕ С‡РёСЃР»Р°
 	head = new Node((rand() % 100) * pow((-1), rand()), nullptr);
 	Node* current = head;
 
@@ -39,13 +39,13 @@ void List::Print()
 
 List List::CreateList(bool (*predicate)(int element))
 {
-	// Новый список
+	// РќРѕРІС‹Р№ СЃРїРёСЃРѕРє
 	List newList;
 
-	// Текущий элемент старого списка
+	// РўРµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ СЃС‚Р°СЂРѕРіРѕ СЃРїРёСЃРєР°
 	Node* mainCurrent = head;
 
-	// Текущий элемент нового списка
+	// РўРµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР°
 	Node* newCurrent = new Node(0, nullptr);
 	size_t nodeCounter = 0;
 
@@ -53,13 +53,13 @@ List List::CreateList(bool (*predicate)(int element))
 	{
 		if (predicate(mainCurrent->data))
 		{
-			// Элементы нового списка не будут связаны с
-			// элементами старого. Для каждого элемента в новом
-			// списке будет новый адрес
+			// Р­Р»РµРјРµРЅС‚С‹ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР° РЅРµ Р±СѓРґСѓС‚ СЃРІСЏР·Р°РЅС‹ СЃ
+			// СЌР»РµРјРµРЅС‚Р°РјРё СЃС‚Р°СЂРѕРіРѕ. Р”Р»СЏ РєР°Р¶РґРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РЅРѕРІРѕРј
+			// СЃРїРёСЃРєРµ Р±СѓРґРµС‚ РЅРѕРІС‹Р№ Р°РґСЂРµСЃ
 			Node* temp = new Node(mainCurrent->data, nullptr);
 
-			// Первый подходящий элемент должен быть
-			// головным в новом списке
+			// РџРµСЂРІС‹Р№ РїРѕРґС…РѕРґСЏС‰РёР№ СЌР»РµРјРµРЅС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ
+			// РіРѕР»РѕРІРЅС‹Рј РІ РЅРѕРІРѕРј СЃРїРёСЃРєРµ
 			if (newList.head == nullptr)
 			{
 				newList.head = temp;
@@ -80,7 +80,7 @@ List List::CreateList(bool (*predicate)(int element))
 
 List List::CreateEvenPositiveList()
 {
-	// Лямбда-выражение
+	// Р›СЏРјР±РґР°-РІС‹СЂР°Р¶РµРЅРёРµ
 	return CreateList([](int element) {
 			return element % 2 == 0 && element > 0; 
 		});
@@ -88,7 +88,7 @@ List List::CreateEvenPositiveList()
 
 List List::CreateOddNegativeList()
 {
-	// Лямбда-выражение
+	// Р›СЏРјР±РґР°-РІС‹СЂР°Р¶РµРЅРёРµ
 	return CreateList([](int element) {
 			return element % 2 == -1 && element < 0;
 		});
