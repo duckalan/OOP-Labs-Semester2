@@ -30,6 +30,11 @@ struct List
 	void Print();
 
 	/// <summary>
+	/// Вставка узла <paramref name="newNode"/> в конец списка.
+	/// </summary>
+	void InsertToEnd(Node* newNode);
+
+	/// <summary>
 	/// Создание из текущего списка нового списка на основании 
 	/// условия <paramref name="predicate"/> для его элементов
 	/// </summary>

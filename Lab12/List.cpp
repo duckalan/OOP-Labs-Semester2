@@ -37,6 +37,29 @@ void List::Print()
 	std::cout << std::endl;
 }
 
+void List::InsertToEnd(Node* newNode)
+{
+	if (head == nullptr)
+	{
+		head = newNode;
+	}
+	else
+	{
+		Node* current = head;
+		// Доход до последнего элемента
+		while (current->next != nullptr)
+		{
+			current = current->next;
+		}
+
+		// Делаем новый узел последним
+		newNode->next = nullptr;
+		current->next = newNode;
+	}
+
+	length++;
+}
+
 List List::CreateList(bool (*predicate)(int element))
 {
 	// Новый список
@@ -44,10 +67,6 @@ List List::CreateList(bool (*predicate)(int element))
 
 	// Текущий элемент старого списка
 	Node* mainCurrent = head;
-
-	// Текущий элемент нового списка
-	Node* newCurrent = new Node(0, nullptr);
-	size_t nodeCounter = 0;
 
 	for (size_t i = 0; i < length; i++)
 	{
@@ -58,23 +77,10 @@ List List::CreateList(bool (*predicate)(int element))
 			// списке будет новый адрес
 			Node* temp = new Node(mainCurrent->data, nullptr);
 
-			// Первый подходящий элемент должен быть
-			// головным в новом списке
-			if (newList.head == nullptr)
-			{
-				newList.head = temp;
-				newCurrent = newList.head;
-			}
-			else
-			{
-				newCurrent->next = temp;
-				newCurrent = temp;
-			}
-			nodeCounter++;
+			newList.InsertToEnd(temp);
 		}
 		mainCurrent = mainCurrent->next;
 	}
-	newList.length = nodeCounter;
 	return newList;
 }
 
