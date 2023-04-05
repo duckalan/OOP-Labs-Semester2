@@ -18,18 +18,18 @@
     <ClCompile Include="Main.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="Marsh.cpp">
+    <ClCompile Include="List.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="DataBase.cpp">
+    <ClCompile Include="Node.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Marsh.h">
+    <ClInclude Include="Node.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="DataBase.h">
+    <ClInclude Include="List.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

@@ -37,29 +37,24 @@ using std::endl;
 
 void FindById(DataBase& db);
 
-// Прочитать - вывести в консоль из файла
-void ReadTableFromFile(DataBase& db);
-
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-
-	cout << "Введите требуемое количество маршрутов: ";
-	int dbSize;
-	cin >> dbSize;
-	struct DataBase db(dbSize);
-	db.Initialize();
+	struct DataBase db;
 
 	bool isTerminated = false;
 	while (!isTerminated)
 	{
 		cout << "\nВыберите действие (введите значение):"
-			 << "\n 0 - выход;"
-			 << "\n 1 - вывод таблицы маршрутов;"
-			 << "\n 2 - отсортировать маршуруты по номеру;"
-			 << "\n 3 - поиск маршрута по номеру;"
-			 << "\n 4 - сохранить таблицу в файл;"
-			 << "\n 5 - прочитать таблицу из файла;\n";
+			 << "\n  0 - выход;"
+			 << "\n  1 - инициализировать маршруты;"
+			 << "\n  2 - вывод таблицы маршрутов;"
+			 << "\n  3 - отсортировать маршуруты по номеру;"
+			 << "\n  4 - поиск маршрута по номеру;"
+			 << "\n  5 - сохранить таблицу в текстовый файл;"
+			 << "\n  6 - сохранить таблицу в бинарный файл;"
+			 << "\n  7 - прочитать таблицу из текстового файла;"
+			 << "\n  8 - прочитать таблицу из бинарного файла.\n";
 		int userChoice;
 		cin >> userChoice;
 
@@ -69,19 +64,49 @@ int main()
 			isTerminated = true;
 			break;
 		case 1:
-			db.PrintMarshesTable();
+			db.Initialize();
 			break;
 		case 2:
-			db.SortMarshesById();
+			db.PrintMarshesTable();
 			break;
 		case 3:
+			db.SortMarshesById();
+			break;
+		case 4:
 			FindById(db);
 			break;
+		case 5:
+		{
+			char filePath[255]{ "F:\\test.txt" };
+			//std::cin >> filePath;
+			db.WriteTableIntoTextFile(filePath);
+			break;
+		}
+		case 6:
+		{
+			char filePath[255]{ "F:\\test.bin" };
+			//std::cin >> filePath;
+			db.WriteTableIntoBinaryFile(filePath);
+			break;
+		}
+		case 7:
+		{
+			char filePath[255]{ "F:\\test.txt" };
+			//std::cin >> filePath;
+			db.ReadTableFromTextFile(filePath);
+			break;
+		}
+		case 8:
+		{
+			char filePath[255]{ "F:\\test.bin" };
+			//std::cin >> filePath;
+			db.ReadTableFromBinaryFile(filePath);
+			break;
+		}
 		default:
 			isTerminated = true;
 		}
 	}
-
 	system("pause");
 }
 
@@ -90,8 +115,6 @@ void FindById(DataBase& db) {
 	int toFind;
 	cin >> toFind;
 
-	// Так как список отсортирован, можно применить 
-	// бинарный поиск
 	Marsh found = db.SearchById(toFind);
 
 	if (found.id >= 0)
@@ -102,8 +125,4 @@ void FindById(DataBase& db) {
 	{
 		cout << "Маршрут с номером " << toFind << " не найден" << endl;
 	}
-}
-
-void ReadTableFromFile(DataBase& db)
-{
 }

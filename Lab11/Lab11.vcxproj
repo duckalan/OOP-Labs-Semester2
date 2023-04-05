@@ -46,7 +46,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -112,7 +112,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataBase.cpp" />
-    <ClCompile Include="Lab11.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Marsh.cpp" />
   </ItemGroup>
   <ItemGroup>
