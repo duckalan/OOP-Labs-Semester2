@@ -1,4 +1,4 @@
-#include "Node.h"
+﻿#include "Node.h"
 
 Node::Node(Student student, Node* next) : student(student)
 {

@@ -1,4 +1,4 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include <iostream>
 #include <iomanip>
 #include "Student.h"
@@ -14,19 +14,19 @@ Student Student::CreateFromUserInput()
 {
 	std::cin.get();
 	char fullName[Student::FullNameLength];
-	std::cout << "Ââåäèòå ÔÈÎ ñòóäåíòà â ôîðìàòå: <Ôàìèëèÿ> <Èíèöèàëû>. "
-		<< "Ìàêñèìàëüíî âîçìîæíàÿ äëèíà: " << Student::FullNameLength - 1 << "\n";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ: <Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ> <Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ñ‹>. "
+		<< "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð°Ñ Ð´Ð»Ð¸Ð½Ð°: " << Student::FullNameLength - 1 << "\n";
 	std::cin.getline(fullName, Student::FullNameLength);
 	
 	//std::cin.get();
 	char birthDate[Student::BirthDateLength];
-	std::cout << "Ââåäèòå äàòó ðîæäåíèÿ ñòóäåíòà â ôîðìàòå: ÄÄ.ÌÌ.ÃÃÃÃ: \n";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ: Ð”Ð”.ÐœÐœ.Ð“Ð“Ð“Ð“: \n";
 	std::cin.getline(birthDate, Student::BirthDateLength);
 	//std::cin.get();
 
 
 	int performance;
-	std::cout << "Ââåäèòå óñïåâàåìîñòü ñòóäåíòà â ôîðìàòå îöåíêè îò 2 äî 5: \n";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑƒÑÐ¿ÐµÐ²Ð°ÐµÐ¼Ð¾ÑÑ‚ÑŒ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ Ð¾Ñ†ÐµÐ½ÐºÐ¸ Ð¾Ñ‚ 2 Ð´Ð¾ 5: \n";
 	std::cin >> performance;
 
 	return Student(fullName, birthDate, (Performance)performance);
@@ -49,7 +49,7 @@ Performance Student::GetPerformance()
 
 void Student::PrintInfo()
 {
-	std::cout << "ÔÈÎ: " << fullName
-			  << "\nÄàòà ðîæäåíèÿ: " << birthDate
-		      << "\nÓñïåâàåìîñòü: " << (int)performance << std::endl;
+	std::cout << "Ð¤Ð˜Ðž: " << fullName
+			  << "\nÐ”Ð°Ñ‚Ð° Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ: " << birthDate
+		      << "\nÐ£ÑÐ¿ÐµÐ²Ð°ÐµÐ¼Ð¾ÑÑ‚ÑŒ: " << (int)performance << std::endl;
 }

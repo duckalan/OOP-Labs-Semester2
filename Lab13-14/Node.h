@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Student.h"
 
 struct Node
@@ -6,7 +6,7 @@ struct Node
 	 Student student;
 
 	/// <summary>
-	/// Указатель на следующий элемент.
+	/// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚.
 	/// </summary>
 	Node* next;
 

@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include "LinkedList.h"
@@ -11,7 +11,7 @@ Node* LinkedList::GetNodeAt(size_t index)
 	}
 	if (index >= length)
 	{
-		std::cerr << "Индекс " << index << " выходит за границы списка [0;" << length - 1 << "]\n";
+		std::cerr << "РРЅРґРµРєСЃ " << index << " РІС‹С…РѕРґРёС‚ Р·Р° РіСЂР°РЅРёС†С‹ СЃРїРёСЃРєР° [0;" << length - 1 << "]\n";
 		return nullptr;
 	}
 
@@ -28,7 +28,7 @@ void LinkedList::SwapNodes(Node* n1, Node* n2, size_t n1Index)
 {
 	Node* last = GetNodeAt(length - 1);
 
-	// Список из 2 элементов
+	// РЎРїРёСЃРѕРє РёР· 2 СЌР»РµРјРµРЅС‚РѕРІ
 	if (n1 == root && n2 == last)
 	{
 		n1->next = n2;
@@ -36,7 +36,7 @@ void LinkedList::SwapNodes(Node* n1, Node* n2, size_t n1Index)
 		return;
 	}
 
-	// Перестановка корневого и следующего за ним элементов
+	// РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° РєРѕСЂРЅРµРІРѕРіРѕ Рё СЃР»РµРґСѓСЋС‰РµРіРѕ Р·Р° РЅРёРј СЌР»РµРјРµРЅС‚РѕРІ
 	if (n1 == root)
 	{
 		n1->next = n2->next;
@@ -45,10 +45,10 @@ void LinkedList::SwapNodes(Node* n1, Node* n2, size_t n1Index)
 		return;
 	}
 	
-	// Перестановка предпоследнего и последнего элементов
+	// РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° РїСЂРµРґРїРѕСЃР»РµРґРЅРµРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚РѕРІ
 	if (n2 == last)
 	{
-		// Элемент перед предпоследним
+		// Р­Р»РµРјРµРЅС‚ РїРµСЂРµРґ РїСЂРµРґРїРѕСЃР»РµРґРЅРёРј
 		Node* preN1 = GetNodeAt(n1Index - 1);
 		n2->next = n1;
 		n1->next = nullptr;
@@ -56,10 +56,10 @@ void LinkedList::SwapNodes(Node* n1, Node* n2, size_t n1Index)
 		return;
 	}
 
-	// Перестановка элементов между начальным и конечным
-	// Элемент перед n1
+	// РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° СЌР»РµРјРµРЅС‚РѕРІ РјРµР¶РґСѓ РЅР°С‡Р°Р»СЊРЅС‹Рј Рё РєРѕРЅРµС‡РЅС‹Рј
+	// Р­Р»РµРјРµРЅС‚ РїРµСЂРµРґ n1
 	Node* preN1 = GetNodeAt(n1Index - 1);
-	// Элемент после n2
+	// Р­Р»РµРјРµРЅС‚ РїРѕСЃР»Рµ n2
 	Node* afterN2 = n2->next;
 	n1->next = afterN2;
 	n2->next = n1;
@@ -70,7 +70,7 @@ void LinkedList::SortBy(bool(*comparer)(Student s1, Student s2))
 {
 	if (length < 2)
 	{
-		std::cerr << "Сортировка списка с длиной " << length << " невозможна\n";
+		std::cerr << "РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРїРёСЃРєР° СЃ РґР»РёРЅРѕР№ " << length << " РЅРµРІРѕР·РјРѕР¶РЅР°\n";
 		return;
 	}
 
@@ -122,7 +122,7 @@ void LinkedList::InitFromFile(const char* filePath)
 	if (!f)
 	{
 		length = 0;
-		perror("Ошибка при открытии файла: ");
+		perror("РћС€РёР±РєР° РїСЂРё РѕС‚РєСЂС‹С‚РёРё С„Р°Р№Р»Р°: ");
 	}
 	else
 	{
@@ -153,7 +153,7 @@ void LinkedList::InitFromFile(const char* filePath)
 
 void LinkedList::InsertAt(size_t index, Student student)
 {
-	// Вставка в начало списка.
+	// Р’СЃС‚Р°РІРєР° РІ РЅР°С‡Р°Р»Рѕ СЃРїРёСЃРєР°.
 	if (index == 0)
 	{
 		if (root == nullptr)
@@ -170,25 +170,25 @@ void LinkedList::InsertAt(size_t index, Student student)
 	}
 	if (index > length)
 	{
-		std::cerr << "Индекс " << index << " выходит за границы списка [0;" << length - 1 << "]\n";
+		std::cerr << "РРЅРґРµРєСЃ " << index << " РІС‹С…РѕРґРёС‚ Р·Р° РіСЂР°РЅРёС†С‹ СЃРїРёСЃРєР° [0;" << length - 1 << "]\n";
 		return;
 	}
 
-	// Доходим до узла перед вставляемым индексом
+	// Р”РѕС…РѕРґРёРј РґРѕ СѓР·Р»Р° РїРµСЂРµРґ РІСЃС‚Р°РІР»СЏРµРјС‹Рј РёРЅРґРµРєСЃРѕРј
 	Node* preInserted = GetNodeAt(index - 1);
 
-	// Вставка в конец списка
+	// Р’СЃС‚Р°РІРєР° РІ РєРѕРЅРµС† СЃРїРёСЃРєР°
 	if (index == length)
 	{
 		Node* temp = new Node(student, nullptr);
 		preInserted->next = temp;
 	}
-	// Вставка в любое другое место.
+	// Р’СЃС‚Р°РІРєР° РІ Р»СЋР±РѕРµ РґСЂСѓРіРѕРµ РјРµСЃС‚Рѕ.
 	else
 	{
-		// Связываем новый элемент с узлом на нужном индексе,
-		// затем связываем элемент перед вставляемым индексом 
-		// с новым элементом
+		// РЎРІСЏР·С‹РІР°РµРј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃ СѓР·Р»РѕРј РЅР° РЅСѓР¶РЅРѕРј РёРЅРґРµРєСЃРµ,
+		// Р·Р°С‚РµРј СЃРІСЏР·С‹РІР°РµРј СЌР»РµРјРµРЅС‚ РїРµСЂРµРґ РІСЃС‚Р°РІР»СЏРµРјС‹Рј РёРЅРґРµРєСЃРѕРј 
+		// СЃ РЅРѕРІС‹Рј СЌР»РµРјРµРЅС‚РѕРј
 		Node* temp = new Node(student, preInserted->next);
 		preInserted->next = temp;
 	}
@@ -198,7 +198,7 @@ void LinkedList::InsertAt(size_t index, Student student)
 
 void LinkedList::DeleteAt(size_t index)
 {
-	// Удаление головного элемента
+	// РЈРґР°Р»РµРЅРёРµ РіРѕР»РѕРІРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 	if (index == 0)
 	{
 		if (root != nullptr)
@@ -210,21 +210,21 @@ void LinkedList::DeleteAt(size_t index)
 	}
 	if (index >= length)
 	{
-		std::cerr << "Индекс " << index << " выходит за границы списка [0;" << length - 1 << "]\n";
+		std::cerr << "РРЅРґРµРєСЃ " << index << " РІС‹С…РѕРґРёС‚ Р·Р° РіСЂР°РЅРёС†С‹ СЃРїРёСЃРєР° [0;" << length - 1 << "]\n";
 		return;
 	}
 
-	// Доходим до узла перед удаляемым индексом
+	// Р”РѕС…РѕРґРёРј РґРѕ СѓР·Р»Р° РїРµСЂРµРґ СѓРґР°Р»СЏРµРјС‹Рј РёРЅРґРµРєСЃРѕРј
 	Node* current = GetNodeAt(index - 1);
 
-	// Удаление в конце списка
+	// РЈРґР°Р»РµРЅРёРµ РІ РєРѕРЅС†Рµ СЃРїРёСЃРєР°
 	if (index == length - 1)
 	{
 		Node* temp = current->next;
 		current->next = nullptr;
 		delete temp;
 	}
-	// Удаление в любом другом месте
+	// РЈРґР°Р»РµРЅРёРµ РІ Р»СЋР±РѕРј РґСЂСѓРіРѕРј РјРµСЃС‚Рµ
 	else
 	{
 		Node* temp = current->next;
@@ -237,7 +237,7 @@ void LinkedList::DeleteAt(size_t index)
 void LinkedList::SortByFullName()
 {
 	SortBy([](Student s1, Student s2) {
-		// Сортировка первых букв фамилий по алфавиту
+		// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРµСЂРІС‹С… Р±СѓРєРІ С„Р°РјРёР»РёР№ РїРѕ Р°Р»С„Р°РІРёС‚Сѓ
 		return s1.GetFullName()[0] > s2.GetFullName()[0];
 		});
 }
@@ -247,30 +247,30 @@ void LinkedList::SortByBirthDate()
 
 	SortBy([](Student s1, Student s2) 
 		{
-			// Student::BirthDateLength - 2 - длина даты рождения без 
-			// разделительных точек
+			// Student::BirthDateLength - 2 - РґР»РёРЅР° РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ Р±РµР· 
+			// СЂР°Р·РґРµР»РёС‚РµР»СЊРЅС‹С… С‚РѕС‡РµРє
 			char birthDate1[Student::BirthDateLength - 2]{};
 			char birthDate2[Student::BirthDateLength - 2]{};
 			size_t digitCounter = 0;
 
-			// Преобразовываем строчную дату DD.MM.YYYY в строку YYYYMMDD.
-			// Порядок выбран по важности каждого значения в сортировке.
+			// РџСЂРµРѕР±СЂР°Р·РѕРІС‹РІР°РµРј СЃС‚СЂРѕС‡РЅСѓСЋ РґР°С‚Сѓ DD.MM.YYYY РІ СЃС‚СЂРѕРєСѓ YYYYMMDD.
+			// РџРѕСЂСЏРґРѕРє РІС‹Р±СЂР°РЅ РїРѕ РІР°Р¶РЅРѕСЃС‚Рё РєР°Р¶РґРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РІ СЃРѕСЂС‚РёСЂРѕРІРєРµ.
 			
-			// Сначала записываем год
+			// РЎРЅР°С‡Р°Р»Р° Р·Р°РїРёСЃС‹РІР°РµРј РіРѕРґ
 			for (int i = Student::BirthDateLength - 5 ; i < Student::BirthDateLength - 1; i++)
 			{
 				birthDate1[digitCounter] = s1.GetBirthDate()[i];
 				birthDate2[digitCounter] = s2.GetBirthDate()[i];
 				digitCounter++;
 			}
-			// Затем месяц
+			// Р—Р°С‚РµРј РјРµСЃСЏС†
 			for (int i = Student::BirthDateLength - 8; i < Student::BirthDateLength - 6; i++)
 			{
 				birthDate1[digitCounter] = s1.GetBirthDate()[i];
 				birthDate2[digitCounter] = s2.GetBirthDate()[i];
 				digitCounter++;
 			}
-			// Затем день
+			// Р—Р°С‚РµРј РґРµРЅСЊ
 			for (int i = 0; i < Student::BirthDateLength - 9; i++)
 			{
 				birthDate1[digitCounter] = s1.GetBirthDate()[i];
@@ -278,7 +278,7 @@ void LinkedList::SortByBirthDate()
 				digitCounter++;
 			}
 
-			// Конвертируем строки YYYYMMDD в числа YYYYMMDD и сравниваем
+			// РљРѕРЅРІРµСЂС‚РёСЂСѓРµРј СЃС‚СЂРѕРєРё YYYYMMDD РІ С‡РёСЃР»Р° YYYYMMDD Рё СЃСЂР°РІРЅРёРІР°РµРј
 			return atoll(birthDate1) > atoll(birthDate2);
 		});
 }

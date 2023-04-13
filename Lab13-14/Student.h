@@ -1,58 +1,58 @@
-#pragma once
+п»ї#pragma once
 #include "Performance.h"
 class Student
 {
 public:
 	/// <summary>
-	/// Максимальная длина полного имени.
+	/// РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РїРѕР»РЅРѕРіРѕ РёРјРµРЅРё.
 	/// </summary>
 	static const size_t FullNameLength = 20;
 
 	/// <summary>
-	/// Максимальная длина даты рождения.
+	/// РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ.
 	/// </summary>
 	static const size_t BirthDateLength = 11;
 private:
 
 	/// <summary>
-	/// Фамилия и инициалы.
+	/// Р¤Р°РјРёР»РёСЏ Рё РёРЅРёС†РёР°Р»С‹.
 	/// </summary>
 	char fullName[FullNameLength];
 
 	/// <summary>
-	/// Дата рождения (DD.MM.YYYY).
+	/// Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ (DD.MM.YYYY).
 	/// </summary>
 	char birthDate[BirthDateLength];
 	
 	/// <summary>
-	/// Успеваемость.
+	/// РЈСЃРїРµРІР°РµРјРѕСЃС‚СЊ.
 	/// </summary>
 	Performance performance;
 public:
 	Student(char* fullName, char* birthDate, Performance performance);
 
 	/// <summary>
-	/// Создать объект студента с помощью консольного ввода.
+	/// РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃС‚СѓРґРµРЅС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РІРІРѕРґР°.
 	/// </summary>
 	static Student CreateFromUserInput();
 
 	/// <summary>
-	/// Получить ФИО студента.
+	/// РџРѕР»СѓС‡РёС‚СЊ Р¤РРћ СЃС‚СѓРґРµРЅС‚Р°.
 	/// </summary>
 	char* GetFullName();
 
 	/// <summary>
-	/// Получить дату рождения студента.
+	/// РџРѕР»СѓС‡РёС‚СЊ РґР°С‚Сѓ СЂРѕР¶РґРµРЅРёСЏ СЃС‚СѓРґРµРЅС‚Р°.
 	/// </summary>
 	char* GetBirthDate();
 
 	/// <summary>
-	/// Получить успеваемость студента.
+	/// РџРѕР»СѓС‡РёС‚СЊ СѓСЃРїРµРІР°РµРјРѕСЃС‚СЊ СЃС‚СѓРґРµРЅС‚Р°.
 	/// </summary>
 	Performance GetPerformance();
 
 	/// <summary>
-	/// Вывод информации в консоль.
+	/// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РІ РєРѕРЅСЃРѕР»СЊ.
 	/// </summary>
 	void PrintInfo();
 };
