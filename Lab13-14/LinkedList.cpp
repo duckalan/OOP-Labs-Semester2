@@ -1,7 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-
-#include <iostream>
-#include "LinkedList.h"
+﻿#include "LinkedList.h"
 
 Node* LinkedList::GetNodeAt(size_t index)
 {
@@ -89,7 +86,7 @@ void LinkedList::SortBy(bool(*comparer)(Student s1, Student s2))
 	}
 }
 
-LinkedList LinkedList::FindBy(void* toFind, bool (*equalCondition)(Student student, void* value))
+LinkedList LinkedList::FindBy(std::function<bool(Student s)> predicate)
 {
 	LinkedList list;
 	size_t numOfFoundStudents = 0;
@@ -97,7 +94,7 @@ LinkedList LinkedList::FindBy(void* toFind, bool (*equalCondition)(Student stude
 
 	for (size_t i = 0; i < length; i++)
 	{
-		if (equalCondition(current->student, toFind))
+		if (predicate(current->student))
 		{
 			list.InsertAt(numOfFoundStudents, current->student);
 			numOfFoundStudents++;
@@ -147,6 +144,40 @@ void LinkedList::InitFromFile(const char* filePath)
 		}
 		length = studentCounter;
 
+		fclose(f);
+	}
+}
+
+void LinkedList::WriteToFile(const char * filePath, size_t count)
+{
+	FILE* f = fopen(filePath, "w");
+	if (!f)
+	{
+		perror("Ошибка открытия файла: ");
+	}
+	else
+	{
+		Node* current = root;
+		for (size_t i = 0; i < count; i++)
+		{
+			char strToWrite[255];
+			
+			strcpy(strToWrite, current->student.GetFullName());
+			strcat(strToWrite, " ");
+			strcat(strToWrite, current->student.GetBirthDate());
+			strcat(strToWrite, " ");
+			char p[2];
+			_itoa((int)current->student.GetPerformance(), p, 10);
+			strcat(strToWrite, p);
+			if (i != count - 1)
+			{
+				strcat(strToWrite, "\n");
+			}
+			
+
+			fputs(strToWrite, f);
+			current = current->next;
+		}
 		fclose(f);
 	}
 }
@@ -222,14 +253,12 @@ void LinkedList::DeleteAt(size_t index)
 	{
 		Node* temp = current->next;
 		current->next = nullptr;
-		delete temp;
 	}
 	// Удаление в любом другом месте
 	else
 	{
 		Node* temp = current->next;
 		current->next = current->next->next;
-		delete temp;
 	}
 	length--;
 }
@@ -292,31 +321,25 @@ void LinkedList::SortByPerformance()
 
 LinkedList LinkedList::FindByFullName(const char* toFind)
 {
-	return FindBy(
-		(void*) toFind,
-		[](Student student, void* value)
+	return FindBy([toFind](Student s)
 		{
-			return strcmp(student.GetFullName(), (char*)value) == 0;
+			return strcmp(s.GetFullName(), toFind) == 0;
 		});
 }
 
 LinkedList LinkedList::FindByBirthDate(const char* toFind)
 {
-	return FindBy(
-		(void*) toFind,
-		[](Student student, void* value)
+	return FindBy([toFind](Student s)
 		{
-			return strcmp(student.GetBirthDate(), (char*)value) == 0;
+			return strcmp(s.GetBirthDate(), toFind) == 0;
 		});
 }
 
 LinkedList LinkedList::FindByPerformance(Performance toFind)
 {
-	return FindBy(
-		(void*) &toFind,
-		[](Student student, void* value)
+	return FindBy([toFind](Student s)
 		{
-			return student.GetPerformance() == (*(Performance*) value);
+			return s.GetPerformance() == toFind;
 		});
 }
 

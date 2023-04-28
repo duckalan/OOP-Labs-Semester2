@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Lab13-14/g.txt
+/Lab13-14/s
+/Lab13-14/students.txt
+/Lab13-14/students2.txt

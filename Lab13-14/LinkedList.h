@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include "Node.h"
+#include <iostream>
+#include <functional>
 
 /// <summary>
 /// Односвязный список, элементами которого являются объекты 
@@ -30,7 +32,7 @@ private:
 	void SwapNodes(Node* n1, Node* n2, size_t n1Index);
 
 	/// <summary>
-	/// Сортировка списка с использованием компаратора 
+	/// Сортировка списка с использованием компаратора.
 	/// <paramref name="comparer"/>
 	/// </summary>
 	/// <param name="comparer">Определяет условие сравнения для сортировки.</param>
@@ -38,15 +40,16 @@ private:
 
 	/// <summary>
 	/// Найти студентов по параметру <paramref name="toFind"/> с условием
-	/// равенста <paramref name="equalCondition"/>.
+	/// равенста <paramref name="predicate"/>.
 	/// </summary>
-	/// <param name="equalCondition"> 
+	/// <param name="predicate"> 
 	/// Определяет условие равенства какого-либо поля <paramref name="student"/> 
 	/// и передаваемого значения <paramref name="value"/>.
 	/// </param>
 	/// <returns>Список с найденными студентами. 
 	/// Если ни один студент не найден, пустой список.</returns>
-	LinkedList FindBy(void* toFind, bool (*equalCondition) (Student student, void* value));
+	LinkedList FindBy(std::function<bool(Student s)> predicate);
+
 public:
 	/// <summary>
 	/// Создание пустого списка.
@@ -57,6 +60,11 @@ public:
 	/// Инициализация списка данными из текстового файла.
 	/// </summary>
 	void InitFromFile(const char* filePath);
+	
+	/// <summary>
+	/// Запись списка в текстовый файл.
+	/// </summary>
+	void WriteToFile(const char* filePath, size_t count);
 
 	/// <summary>
 	/// Вставить элемент <paramref name="student"/> на позицию

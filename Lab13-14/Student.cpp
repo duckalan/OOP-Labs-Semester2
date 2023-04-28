@@ -18,12 +18,9 @@ Student Student::CreateFromUserInput()
 		<< "Максимально возможная длина: " << Student::FullNameLength - 1 << "\n";
 	std::cin.getline(fullName, Student::FullNameLength);
 	
-	//std::cin.get();
 	char birthDate[Student::BirthDateLength];
 	std::cout << "Введите дату рождения студента в формате: ДД.ММ.ГГГГ: \n";
 	std::cin.getline(birthDate, Student::BirthDateLength);
-	//std::cin.get();
-
 
 	int performance;
 	std::cout << "Введите успеваемость студента в формате оценки от 2 до 5: \n";

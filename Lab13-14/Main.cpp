@@ -3,6 +3,10 @@
 #include "Student.h"
 #include "LinkedList.h"
 
+#include <windows.h>
+#include <fcntl.h>
+#include <io.h>
+
 using std::cout;
 using std::cin;
 
@@ -18,16 +22,20 @@ void PrintMenu() {
 		<< "7 - отсортировать список по ФИО;\n"
 		<< "8 - отсортировать список по дате рождения;\n"
 		<< "9 - отсортировать список по успеваемости;\n"
-		<< "10 - вывод списка.\n";
+		<< "10 - вывод списка;\n"
+		<< "11 - запись списка в файл.\n";
 }
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "ru-RU");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
 	bool isTerminated = false;
 	int userChoice;
 	LinkedList list;
+	
 
 	while (!isTerminated)
 	{
@@ -40,13 +48,18 @@ int main()
 			isTerminated = true;
 			break;
 		case 1:
-			/*char filePath[255]{};
-			cout << "Введите путь до файла, записывая обратные слеши \\ по двое (\\\\): ";
-			cin >> filePath;*/
-			list.InitFromFile("H:\\test.txt");
+		{
+			//F
+			char filePath[255] = "E:\\Лабораторные ОАиООП\\Semester2\\Lab13-14\\";
+			char fileName[255]{};
+			cout << "Введите название файла: ";
+			cin >> fileName;
+			strcat(filePath, fileName);
+			list.InitFromFile(filePath);
 			cout << "Инициализированный список:\n";
 			list.Print();
 			break;
+		}
 		case 2:
 		{
 			size_t addIndex;
@@ -77,7 +90,8 @@ int main()
 			char fullName[Student::FullNameLength]{};
 			cout << "Введите искомое ФИО длиной до " << Student::FullNameLength - 1
 				<< " в формате: <Фамилия> <Инициалы>: ";
-			cin >> fullName;
+			std::cin.get();
+			cin.getline(fullName, Student::FullNameLength);
 
 			LinkedList n = list.FindByFullName(fullName);
 			if (n.GetLength() == 0)
@@ -148,6 +162,17 @@ int main()
 		case 10:
 			list.Print();
 			break;
+		case 11:
+		{
+			char filePath[255] = "F:\\Лабораторные ОАиООП\\Semester2\\Lab13-14\\";
+			char fileName[255]{};
+			cout << "Введите название файла: ";
+			cin >> fileName;
+			strcat(filePath, fileName);
+
+			list.WriteToFile(filePath, list.GetLength());
+			break;
+		}
 		default:			
 			isTerminated = true;
 			break;
