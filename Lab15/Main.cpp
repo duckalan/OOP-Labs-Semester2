@@ -78,7 +78,7 @@ int ConvertSubstringToInt(const char* substring)
     size_t numLength = 0;
 
     // Считаем длину числа, чтобы затем сразу скопировать его 
-    // в строку и перевести в число
+    // в отдельную строку и перевести в число
     while (isdigit(currentChar))
     {
         numLength++;

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 class Matrix
 {
@@ -8,51 +8,51 @@ private:
 	size_t _colsCount = 0;
 
 	/// <summary>
-	/// Создание пустого двухмерного массива float размером
+	/// РЎРѕР·РґР°РЅРёРµ РїСѓСЃС‚РѕРіРѕ РґРІСѓС…РјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° float СЂР°Р·РјРµСЂРѕРј
 	/// [<paramref name="rowsCount"/>; <paramref name="colsCount"/>].
 	/// </summary>
 	float** Create2DArray(size_t rowsCount, size_t colsCount);
 
 	/// <summary>
-	/// Удаление двухмерного массива float, состоящего 
-	/// из <paramref name="rowsCount"/> строк.
+	/// РЈРґР°Р»РµРЅРёРµ РґРІСѓС…РјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° float, СЃРѕСЃС‚РѕСЏС‰РµРіРѕ 
+	/// РёР· <paramref name="rowsCount"/> СЃС‚СЂРѕРє.
 	/// </summary>
 	void Delete2DArray(float** arr, size_t rowsCount);
 
 public:
 	/// <summary>
-	/// Создание матрицы из пользовательского ввода.
+	/// РЎРѕР·РґР°РЅРёРµ РјР°С‚СЂРёС†С‹ РёР· РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°.
 	/// </summary>
 	Matrix();
 	 
 	/// <summary>
-	/// Удаление всех выделенных ресурсов.
+	/// РЈРґР°Р»РµРЅРёРµ РІСЃРµС… РІС‹РґРµР»РµРЅРЅС‹С… СЂРµСЃСѓСЂСЃРѕРІ.
 	/// </summary>
 	~Matrix();
 
 	/// <summary>
-	/// Удаление строки с индексом <paramref name="rowIndex"/>.
+	/// РЈРґР°Р»РµРЅРёРµ СЃС‚СЂРѕРєРё СЃ РёРЅРґРµРєСЃРѕРј <paramref name="rowIndex"/>.
 	/// </summary>
 	void DeleteRow(size_t rowIndex);
 
 	/// <summary>
-	/// Удаление столбца с индексом <paramref name="colIndex"/>.
+	/// РЈРґР°Р»РµРЅРёРµ СЃС‚РѕР»Р±С†Р° СЃ РёРЅРґРµРєСЃРѕРј <paramref name="colIndex"/>.
 	/// </summary>
 	void DeleteCol(size_t colIndex);
 
 	/// <summary>
-	/// Вывод матрицы в консоль.
+	/// Р’С‹РІРѕРґ РјР°С‚СЂРёС†С‹ РІ РєРѕРЅСЃРѕР»СЊ.
 	/// </summary>
 	void Print();
 
 	/// <summary>
-	/// Удалить все нулевые строки и столбцы.
+	/// РЈРґР°Р»РёС‚СЊ РІСЃРµ РЅСѓР»РµРІС‹Рµ СЃС‚СЂРѕРєРё Рё СЃС‚РѕР»Р±С†С‹.
 	/// </summary>
 	void DeleteZeroRowsAndCols();
 
 	/// <returns>
-	/// Индекс строки c хотя бы одним положительным элементом
-	/// или -1, если такой строки нет.
+	/// РРЅРґРµРєСЃ СЃС‚СЂРѕРєРё c С…РѕС‚СЏ Р±С‹ РѕРґРЅРёРј РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј СЌР»РµРјРµРЅС‚РѕРј
+	/// РёР»Рё -1, РµСЃР»Рё С‚Р°РєРѕР№ СЃС‚СЂРѕРєРё РЅРµС‚.
 	/// </returns>
 	long long GetFirstRowIndexWithPositiveElement();
 };

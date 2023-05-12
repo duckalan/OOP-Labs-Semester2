@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "Matrix.h"
 
 int main()
@@ -6,23 +6,23 @@ int main()
     setlocale(LC_ALL, "ru-RU");
 
     Matrix mat;
-    std::cout << "Èñõîäíàÿ ìàòðèöà\n";
+    std::cout << "Ð˜ÑÑ…Ð¾Ð´Ð½Ð°Ñ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð°\n";
     mat.Print();
 
     mat.DeleteZeroRowsAndCols();
-    std::cout << "Ìàòðèöà áåç íóëåâûõ ñòðîê è ñòîëáöîâ\n";
+    std::cout << "ÐœÐ°Ñ‚Ñ€Ð¸Ñ†Ð° Ð±ÐµÐ· Ð½ÑƒÐ»ÐµÐ²Ñ‹Ñ… ÑÑ‚Ñ€Ð¾Ðº Ð¸ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð¾Ð²\n";
     mat.Print();
     
     long long index = mat.GetFirstRowIndexWithPositiveElement();
     if (index >= 0)
     {
-        std::cout << "Èíäåêñ ïåðâîé ñòðîêè, ñîäåðæàùåé õîòÿ áû"
-                  << " îäèí ïîëîæèòåëüíûé ýëåìåíò: " << index;
+        std::cout << "Ð˜Ð½Ð´ÐµÐºÑ Ð¿ÐµÑ€Ð²Ð¾Ð¹ ÑÑ‚Ñ€Ð¾ÐºÐ¸, ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‰ÐµÐ¹ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹"
+                  << " Ð¾Ð´Ð¸Ð½ Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚: " << index;
     }
     else
     {
-        std::cout << "Ìàòðèöà íå ñîäåðæèò íè îäíîãî ïîëîæèòåëüíîãî"
-                  << "ýëåìåíòà";
+        std::cout << "ÐœÐ°Ñ‚Ñ€Ð¸Ñ†Ð° Ð½Ðµ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ Ð½Ð¸ Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾"
+                  << "ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°";
     }
     std::cout << std::endl;
         
