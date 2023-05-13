@@ -9,22 +9,21 @@ int main()
     std::cout << "Исходная матрица\n";
     mat.Print();
 
-    mat.DeleteZeroRowsAndCols();
-    std::cout << "Матрица без нулевых строк и столбцов\n";
-    mat.Print();
-    
     long long index = mat.GetFirstRowIndexWithPositiveElement();
     if (index >= 0)
     {
         std::cout << "Индекс первой строки, содержащей хотя бы"
-                  << " один положительный элемент: " << index;
+            << " один положительный элемент: " << index << '\n';
     }
     else
     {
-        std::cout << "Матрица не содержит ни одного положительного"
-                  << "элемента";
+        std::cout << "Матрица не содержит ни одного положительного "
+            << "элемента\n";
     }
-    std::cout << std::endl;
+
+    mat.DeleteZeroRowsAndCols();
+    std::cout << "Матрица без нулевых строк и столбцов\n";
+    mat.Print();
         
     system("pause");
 }

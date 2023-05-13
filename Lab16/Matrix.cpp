@@ -161,6 +161,7 @@ void Matrix::DeleteZeroRowsAndCols()
 			if (_rows[j][i] != 0)
 			{
 				isZeroCol = false;
+				break;
 			}
 		}
 		if (isZeroCol)
