@@ -8,7 +8,7 @@ int Stack::Pop()
 	int returnData = _root->data;
 	_root = _root->next;
 	delete oldRoot;
-
+	length--;
 	return returnData;
 }
 
@@ -24,6 +24,7 @@ void Stack::Push(int data)
 		StackNode* newRoot = new StackNode(oldRoot, data);
 		_root = newRoot;
 	}
+	length++;
 }
 
 void Stack::Print()
@@ -36,4 +37,8 @@ void Stack::Print()
 		current = current->next;
 	}
 	std::cout << std::endl;
+}
+
+size_t Stack::GetLength() {
+	return length;
 }

@@ -10,6 +10,7 @@ private:
 	/// </summary>
 	StackNode* _root = nullptr;
 
+	size_t length;
 public:
 	/// <summary>
 	/// Удалить из стека последний элемент, получив при этом его данные.
@@ -25,5 +26,7 @@ public:
 	/// Вывести весь стек в консоль.
 	/// </summary>
 	void Print();
+
+	size_t GetLength();
 };
 

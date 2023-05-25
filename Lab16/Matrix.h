@@ -24,7 +24,12 @@ public:
 	/// Создание матрицы из пользовательского ввода.
 	/// </summary>
 	Matrix();
-	 
+
+	/// <summary>
+	/// Создание матрицы размером rowsCount x colsCount с случайными числами.
+	/// </summary>
+	Matrix(size_t rowsCount, size_t colsCount);
+
 	/// <summary>
 	/// Удаление всех выделенных ресурсов.
 	/// </summary>
@@ -55,5 +60,9 @@ public:
 	/// или -1, если такой строки нет.
 	/// </returns>
 	long long GetFirstRowIndexWithPositiveElement();
-};
 
+	/// <summary>
+	/// Получить максимальный на побочной диагонали.
+	/// </summary>
+	float GetMaxElementOnMinorDiagonal();
+};

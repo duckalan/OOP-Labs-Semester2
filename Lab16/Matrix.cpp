@@ -1,6 +1,6 @@
 ﻿#include "Matrix.h"
 #include <iostream>
-#include <cassert>
+#include <iomanip>
 
 float** Matrix::Create2DArray(size_t rowsCount, size_t colsCount)
 {
@@ -39,6 +39,22 @@ Matrix::Matrix()
 			std::cin >> _rows[i][j];
 		}
 		std::cout << '\n';
+	}
+}
+
+Matrix::Matrix(size_t rowsCount, size_t colsCount)
+{
+	_rowsCount = rowsCount;
+	_colsCount = colsCount;
+	_rows = Create2DArray(rowsCount, colsCount);
+	srand(std::time(nullptr));
+
+	for (size_t i = 0; i < rowsCount; i++)
+	{
+		for (size_t j = 0; j < colsCount; j++)
+		{
+			_rows[i][j] = rand() % 10 * pow(-1, rand());
+		}
 	}
 }
 
@@ -124,7 +140,8 @@ void Matrix::Print()
 	{
 		for (size_t j = 0; j < _colsCount; j++)
 		{
-			std::cout << _rows[i][j] << " ";
+			std::cout << std::setw(2) << std::right
+					<< _rows[i][j] << " ";
 		}
 		std::cout << '\n';
 	}
@@ -149,6 +166,7 @@ void Matrix::DeleteZeroRowsAndCols()
 		if (isZeroRow)
 		{
 			DeleteRow(i);
+			i--;
 		}
 	}
 
@@ -167,6 +185,7 @@ void Matrix::DeleteZeroRowsAndCols()
 		if (isZeroCol)
 		{
 			DeleteCol(i);
+			i--;
 		}
 	}
 }
@@ -185,4 +204,23 @@ long long Matrix::GetFirstRowIndexWithPositiveElement()
 	}
 
 	return -1;
+}
+
+float Matrix::GetMaxElementOnMinorDiagonal()
+{
+	float max = -FLT_MAX;
+	for (size_t i = 0; i < _rowsCount; i++)
+	{
+		for (size_t j = _colsCount - 1; j < _colsCount; j--)
+		{
+			if (i == (_colsCount - 1 - j))
+			{
+				if (_rows[i][j] > max)
+				{
+					max = _rows[i][j];
+				}
+			}
+		}
+	}
+	return max;
 }

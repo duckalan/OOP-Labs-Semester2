@@ -5,7 +5,7 @@
 
 int ConvertSubstringToInt(const char* substring);
 
-int ParseRpnString(const char* rpnString) 
+void ParseRpnString(const char* rpnString) 
 {
     Stack operandStack;
     int currentIndex = 0;
@@ -55,18 +55,25 @@ int ParseRpnString(const char* rpnString)
     }
 
     // Возвращаем результат операций из стека
-    return operandStack.Pop();
+	if (operandStack.GetLength() == 1)
+	{
+		std::cout << "Результат вычислений: " << operandStack.Pop() << '\n';
+	}
+	else
+	{
+		std::cout << "Текущее  состояние стека:\n";
+		operandStack.Print();
+	}
 }
 
 int main()
 {
     setlocale(LC_ALL, "ru-RU");
     char rpnString[255];
-    //std::cout << ParseRpnString("8 2 5 * + 1 3 2 * + 4 - /") << '\n';
 
     std::cout << "Введите строку в форме обратной польской записи\n";
     std::cin.getline(rpnString, 255);
-    std::cout << "Результат вычислений: " << ParseRpnString(rpnString) << '\n';
+	ParseRpnString(rpnString);
 
     system("pause");
 }

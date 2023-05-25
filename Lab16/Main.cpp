@@ -5,9 +5,21 @@ int main()
 {
     setlocale(LC_ALL, "ru-RU");
 
-    Matrix mat;
+    size_t rowsCount;
+    size_t colsCount;
+    std::cout << "Введите количество строк матрицы: ";
+    std::cin >> rowsCount;
+
+    std::cout << "Введите количество столбцов матрицы: ";
+    std::cin >> colsCount;
+
+
+    Matrix mat(rowsCount, colsCount);
     std::cout << "Исходная матрица\n";
     mat.Print();
+
+    std::cout << "Максимальный элемент на побочной диагонали: "
+        << mat.GetMaxElementOnMinorDiagonal() << " \n";
 
     long long index = mat.GetFirstRowIndexWithPositiveElement();
     if (index >= 0)
@@ -21,8 +33,10 @@ int main()
             << "элемента\n";
     }
 
+    
+
     mat.DeleteZeroRowsAndCols();
-    std::cout << "Матрица без нулевых строк и столбцов\n";
+    std::cout << "\nМатрица без нулевых строк и столбцов\n";
     mat.Print();
         
     system("pause");

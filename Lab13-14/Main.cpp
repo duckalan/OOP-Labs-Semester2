@@ -50,7 +50,7 @@ int main()
 		case 1:
 		{
 			//F
-			char filePath[255] = "E:\\Лабораторные ОАиООП\\Semester2\\Lab13-14\\";
+			char filePath[255] = "F:\\Лабораторные ОАиООП\\Semester2\\";
 			char fileName[255]{};
 			cout << "Введите название файла: ";
 			cin >> fileName;
@@ -164,7 +164,7 @@ int main()
 			break;
 		case 11:
 		{
-			char filePath[255] = "F:\\Лабораторные ОАиООП\\Semester2\\Lab13-14\\";
+			char filePath[255] = "F:\\Лабораторные ОАиООП\\Semester2\\";
 			char fileName[255]{};
 			cout << "Введите название файла: ";
 			cin >> fileName;
